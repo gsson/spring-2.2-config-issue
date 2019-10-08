@@ -1,5 +1,14 @@
 Repository containing a reproducer for spring-projects/spring-boot#18542
 
+_Update_: While initially surprising it works as intended. Latest commit contains the smallest change that restores the
+behavior I was after.
+
+See these links for information and discussion:
+* [spring-projects/spring-boot#18517](//github.com/spring-projects/spring-boot/issues/18517)
+* [spring-projects/spring-boot#18469](//github.com/spring-projects/spring-boot/issues/18469)
+
+---
+
 Manage Spring Boot version in `gradle.properties`
 
 Build with `./gradlew build`
