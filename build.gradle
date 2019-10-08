@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group 'se.fnord'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+compileJava {
+    options.compilerArgs << "-Xlint:all,-processing" << "-Werror"
+    options.encoding = "UTF-8"
+}
+
+dependencies {
+    // Spring
+    implementation(enforcedPlatform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}"))
+    annotationProcessor(enforcedPlatform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}"))
+
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // Lombok
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+
+}
